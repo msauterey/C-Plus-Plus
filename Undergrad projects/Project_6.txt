@@ -1,0 +1,193 @@
+//NAME: SAUTEREY Mathieu
+//UFID: 3912-2912
+
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+
+using namespace std;
+
+
+int choice;
+
+const int elements=3;
+const int rows=3;
+const int columns=3;
+
+class Vector{
+private:
+		double data[elements];
+public:
+		Vector();
+		void read();
+		double get_element (int);
+};
+
+class Matrix{
+private:
+		double data[rows*columns];
+public:
+		Matrix(Vector &, Vector &);
+		void add(const Matrix &);
+		void mult(double);
+		double trace();
+		double norm();
+		void print();
+};
+
+Vector::Vector(void){
+	for(int i=0;i<elements;i++){data[i]=0;}
+}
+
+void Vector::read(void){
+	for(int i=0;i<elements;i++){cin>>data[i];}
+}
+
+double Vector::get_element(int n){
+		return data[n];
+}
+
+Matrix::Matrix(Vector &a, Vector &b){
+	int k=0;
+	for(int j=0;j<elements;j++){
+		for(int i=0;i<elements;i++){
+			data[k++]=a.get_element(j)*b.get_element(i);
+				}
+		
+	}
+	
+}
+
+void Matrix::add(const Matrix &m){
+    int dimens2=elements*elements;
+	for(int i=0; i<dimens2; i++){
+		data[i]+=m.data[i];
+	}
+
+}
+void Matrix::mult(double scalar){
+    int dimens2=elements*elements;
+	for(int i=0; i<dimens2; i++){
+        data[i]*=scalar;
+     
+    }
+   
+}
+
+double Matrix::trace(){
+	double sum=data[0];
+	int cursorm=0;
+	for(int i=1;i<elements;i++){
+	cursorm+=elements+1;
+	sum+=data[cursorm];
+	}
+
+return sum;
+}
+
+double Matrix::norm(){
+    cout.setf(ios::showpoint|ios::fixed);
+    cout.precision(3);
+	double sum=0;
+	for(int i=0;i<elements*elements;i++){
+	sum+=data[i]*data[i];
+	}
+	double norm=sqrt(sum);
+
+	return norm;
+}
+
+void Matrix::print(){
+cout.setf(ios::showpoint|ios::fixed);
+cout.precision(3);
+int counter=0;
+
+		for(int i=0;i<elements*elements;i++){
+			cout<<setw(10)<<data[i];
+			counter++;
+
+			if(counter%3==0){cout<<endl;}
+					}	
+}
+
+
+int main(){
+
+cout<<"COP2271 MATRIX CALCULATOR CLASS PROGRAM"<<endl<<'\n';
+    
+Vector a;
+Vector b;
+Vector c;
+Vector d;
+
+cout<<"Enter 3 elements of vector a"<<endl;
+a.read();
+
+cout<<"Enter 3 elements of vector b"<<endl;
+b.read();
+
+cout<<"Enter 3 elements of vector c"<<endl;
+c.read();
+
+cout<<"Enter 3 elements of vector d"<<endl;
+d.read();
+
+Matrix A(a,b);
+Matrix B(c, d);
+    
+	do{
+
+		cout<<'\n'
+<<"MAIN MENU"<<endl<<'\n'
+<<"1. Print Matrix A"<<endl
+<<"2. Print Matrix B"<<endl
+<<"3. A=A+B"<<endl
+<<"4. Print Trace(A)"<<endl
+<<"5. B=scalar*B"<<endl
+<<"6. Print ||B||"<<endl
+<<"0. Quit"<<endl;
+
+cout<<endl<<"Enter menu selection : ";
+cin>>choice;
+
+        if(choice==1){
+            cout<<"Matrix A:"<<endl;
+			A.print();
+		}
+
+        else if(choice==2){
+            cout<<"Matrix B:"<<endl;
+			B.print();
+        }
+
+        else if(choice==3){
+			cout<<"A+B="<<endl;
+            A.add(B);
+			A.print();
+        }
+
+        else if(choice==4){
+            cout<<" Trace(A)= "<<A.trace()<<endl;
+        }
+
+        else if(choice==5){
+			double scalar;
+			cout<<"Enter scalar :";
+			cin>>scalar;
+			cout<<"scalar*B="<<endl;
+
+           B.mult(scalar);
+           B.print();
+        }
+
+        else if(choice==6){
+            cout<<"||B||= "<<B.norm()<<endl;
+        }
+
+    }while(choice!=0);
+    cout<<"Now quitting..";
+
+	system("PAUSE");
+    return 0;
+    
+}

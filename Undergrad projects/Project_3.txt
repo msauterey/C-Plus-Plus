@@ -1,0 +1,144 @@
+//NAME: SAUTEREY Mathieu
+//UFID: 3912-2912
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+void menu (void);
+double cosineh(double,int);
+double sineh(double,int);
+int nfact(int);
+
+int main (){
+ 
+	char choice;
+	int firstcalcul=0;
+	double x;
+	int n;
+	char choicequit='N';
+
+	do{
+
+menu();
+
+cin>>choice;
+
+cout<<'\n';
+
+if(firstcalcul==0&&(choice=='2'||choice=='3'||choice=='4')){
+cout<<"You have to enter a value first!"<<endl;
+cout<<'\n';
+}
+
+if(firstcalcul==1&&choice=='1'){
+cout<<"Please use the modify option to enter a new value for x."<<endl;
+cout<<'\n';
+}
+
+if(firstcalcul==0&&choice=='1'){
+cout<<"Please give a value for x: ";
+cin>>x;
+cout<<"Please give a value for the approximation order n: ";
+cin>>n;
+cout<<endl;
+firstcalcul=1;
+}
+
+
+if(firstcalcul==1&&choice=='2'){
+cout<<"The hyperbolic sine of x is: "<<sinh(x)<<endl;
+cout<<"Using Taylor series it is: "<<sineh(x,n)<<endl;
+cout<<'\n';
+}
+
+if(firstcalcul==1&&choice=='3'){
+cout<<"The hyperbolic cosine of x is: "<<cosh(x)<<endl;
+cout<<"Using Taylor series it is: "<<cosineh(x,n)<<endl;
+cout<<'\n';
+}
+
+if(firstcalcul==1&&choice=='4'){
+cout<<"Old value of x = "<<x<<endl;
+cout<<"Old approximation = "<<n<<endl;
+cout<<"Please give new value of x: ";
+cin>>x;
+cout<<"Please give new n: ";
+cin>>n;
+cout<<'\n';
+}
+
+if(choice!='0'&&choice!='1'&&choice!='2'&&choice!='3'&&choice!='4'){
+	cout<<"Wrong choice. Only options 1-4 are available."<<endl;
+	cout<<'\n';
+}
+if(choice=='0'){
+	cout<<"Are you sure you want to quit? (Y/N): ";
+	cin>>choicequit;
+	cout<<'\n';
+}
+
+
+
+
+
+	}while(choicequit=='N');
+
+
+if(choicequit=='Y'){
+	cout<<"Now quitting.."<<endl;
+}
+
+system("PAUSE");
+return 0;
+}
+
+void menu (void){
+cout<<"MAIN MENU"<<endl
+<<"1. To enter the data."<<endl
+<<"2. To calculate and approximate the sinh(x)"<<endl
+<<"3. To calculate and approximate the cosh(x)"<<endl
+<<"4. To modify data."<<endl
+<<"0. To quit."<<endl
+<<"Please make a choice: ";
+}
+
+int nfact(int n){
+	int i;
+	int fact=1;
+	for (i=2;i<=n;i++){
+	fact*=i;
+	}
+
+	return fact;
+}
+
+double sineh(double x,int n){
+
+	int f;
+	int c;
+	double sum=0;
+	double div=0;
+	for(int i=0;i<=n;i++){
+		f=2*i+1;
+		div=((pow(x,f))/nfact(f));
+		sum+=div;
+	}
+
+return sum;
+}
+
+double cosineh(double x,int n){
+
+	int f;
+	int c;
+	double sum=0;
+	double div=0;
+	for(int i=0;i<=n;i++){
+		f=2*i;
+		div=((pow(x,f))/nfact(f));
+		sum+=div;
+	}
+
+return sum;
+}

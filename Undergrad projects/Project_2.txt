@@ -1,0 +1,143 @@
+//NAME: SAUTEREY Mathieu
+//UFID: 3912-2912
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main(){
+
+int n;
+int sum;
+int first;
+int second;
+int rank;
+int number;
+int choice;
+int sumadded;
+
+first=0;
+second=1;
+sum=0;
+sumadded=0;
+n=3;
+
+cout<<"COP2271 Fibonacci Calculator"<<endl;
+cout<<"This program detects Fibonacci numbers"<<endl;
+cout<<"and uses them to calculate summations."<<endl;
+cout<<'\n';
+
+do{
+
+first=0;
+second=1;
+sum=0;
+sumadded=0;
+n=3;
+
+cout<<'\n';
+cout<<"Please choose one of the following options"<<endl;
+cout<<"1. To check if a number belongs to the Fibonacci sequence."<<endl;
+cout<<"2. To find a Fibonacci number given its rank."<<endl;
+cout<<"3. To compute a summation of Fibonacci numbers."<<endl;
+cout<<"Press 0 to quit."<<endl;
+cout<<'\n';
+cout<<"Enter your choice: ";
+cin>>choice;
+
+
+if(choice==1){
+	cout<<"Please give an integer number: ";
+	cin>>number;
+
+	if(number==0){
+	cout<<number << " is a Fibonacci number!"<<endl;
+	cout<<"Its rank in the Fibonacci sequence is: 1"<<endl;
+	}
+
+	if(number==1){
+	cout<<number<< " is a Fibonacci number!"<<endl;
+	cout<<"Its rank in the Fibonacci sequence is: 2 AND 3"<<endl;
+	}
+
+	if(number>>1){
+	n=1;
+	
+		while(sum<=number){
+		++n;
+		sum=first+second;
+		first=second;
+		second=sum;
+		}
+				
+		if(first==number){
+		cout<<number<< " is a Fibonacci number!"<<endl;
+		cout<<"Its rank in the Fibonacci sequence is: "<<n<<endl;
+		}
+		else if(sum!=number){
+		cout<<number<< " is NOT a Fibonacci number!"<<endl;
+		}
+	}
+
+}
+
+if(choice==3){
+	cout<<"Please give an integer number: ";
+	cin>>number;
+	
+
+
+	while(second<=number){
+	sumadded+=second;
+	sum=first+second;
+	first=second;
+	second=sum;
+	;
+
+	}
+
+	cout<<"The summation for all Fibonacci numbers less than or equal to "<<number<<" is: "<<sumadded<<endl;
+
+	}
+
+
+if(choice==2){
+	cout<<"Please give the rank of the number you are looking for: ";
+
+	cin>>rank;
+
+	if(rank==2){
+	++sum;
+	}
+
+	if(rank>=2){
+
+	while(n<=rank){
+
+	++n;
+	sum=first+second;
+	first=second;
+	second=sum;
+	} }
+
+	cout<<"The Fibonacci number retrieved is: "<< sum <<endl;
+
+	}
+
+else if(choice!=0&&choice!=1&&choice!=2&&choice!=3){
+cout<<"No such option."<<endl;
+}
+
+
+
+}while(choice!=0);
+
+if(choice==0){
+cout<<"Now quitting.."<<endl;
+}
+
+
+
+system("PAUSE");
+return 0;
+}

@@ -1,0 +1,132 @@
+//NAME: SAUTEREY Mathieu
+//UFID: 3912-2912
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main(void) {
+
+	int choice;
+	int choice2;
+	float feet;
+	float meters;
+	float kilograms;
+	float pounds;
+	float celsius;
+	float fahrenheits;
+
+cout << "Converter Main Menu" << endl;
+	cout << endl;
+	cout << "Please choose one of the following options:" << endl;
+	cout << "1. For Weight Conversions" << endl;
+	cout << "2. For Distance Conversions" << endl;
+	cout << "3. For Temperature Conversions" << endl;
+	cout << endl;
+	cout << "Enter your choice here: ";
+	cin >> choice;
+	cout << endl;
+
+
+if(choice==1) {
+
+		cout << "Please choose" << endl;
+		cout << "1.Pounds-> Kilograms" << endl;
+		cout << "2. Kilograms-> Pounds" << endl;
+		cout << endl;
+		cout << "Enter your choice here: ";
+		cin >> choice2;
+		
+
+	if(choice2==1) {
+			cout << "Please give the weight in Pounds: ";
+			cin >> pounds;
+			kilograms=pounds/2.204622;
+			cout << pounds << " pounds correspond to " << kilograms << "kilograms." << endl;
+
+	}
+
+	if(choice2==2) {
+			cout << "Please give the weight in Kilograms: ";
+			cin >> kilograms;
+			pounds=kilograms*2.204622;
+			cout << kilograms << " kilograms correspond to " << pounds << "pounds." << endl;
+
+	}
+
+	else if (choice2!=1&&choice2!=2) {
+		cout << "Invalid choice." << endl;
+
+	} }
+
+
+
+
+else if(choice==2) {
+
+		cout << "Please choose" << endl;
+		cout << "1.Feet-> Meters" << endl;
+		cout << "2. Meters-> Feet" << endl;
+		cout << endl;
+		cout << "Enter your choice here: ";
+		cin >> choice2;
+
+		if(choice2==1) {
+			cout << "Please give the distance in Feet: ";
+			cin >> feet;
+			meters=feet*0.3048;
+			cout << feet << " feet correspond to " << meters << "meters." << endl;
+		}
+
+		if(choice2==2) {
+			cout << "Please give the distance in Meters: ";
+			cin >> meters;
+			feet=meters/0.3048;
+			cout << meters << " meters correspond to " << feet << "feet." << endl;
+		}
+
+		else if (choice2!=1&&choice2!=2) {
+		cout << "Invalid choice." << endl;
+		} }
+
+else if (choice==3) {
+
+		cout << "Please choose" << endl;
+		cout << "1.Fahrenheit-> Celsius" << endl;
+		cout << "2. Celsius-> Fahrenheit" << endl;
+		cout << endl;
+		cout << "Enter your choice here: ";
+		cin >> choice2;
+
+
+		if(choice2==1) {
+			cout << "Please give the temperature in Fahrenheits: ";
+			cin >> fahrenheits;
+			celsius=(fahrenheits-32)/1.8;
+			cout << fahrenheits << " fahrenheits correspond to " << celsius << "celsius." << endl;
+		}
+
+		if(choice2==2) {
+			cout << "Please give the distance in Celsius: ";
+			cin >> celsius;
+			fahrenheits=celsius*1.8+32;
+			cout << celsius << " celsius correspond to " << fahrenheits << "fahrenheits." << endl;
+		}
+
+		else if (choice2!=1&&choice2!=2) {
+		cout << "Invalid choice." << endl;
+
+		}	}
+
+
+else if (choice!=1,2,3) {
+		cout << "Invalid choice." << endl;
+
+	}
+cout << endl;
+cout << "Now quitting.." << endl;
+
+system("PAUSE");
+
+return 0;
+}
