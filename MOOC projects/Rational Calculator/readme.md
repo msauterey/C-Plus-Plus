@@ -1,1 +1,1 @@
-
+I created a calculator that can handle fractions. For some reason the code no longer compiles since I switched to Visual Studio 2017. I will attempt to fix it when I have time. But feel free to browse through the code to get a feeling for how I layered classes and objects.
